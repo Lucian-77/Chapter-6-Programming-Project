@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <iomanip>
-#include <windows.h>
 
 float f = 0.0f;
 
