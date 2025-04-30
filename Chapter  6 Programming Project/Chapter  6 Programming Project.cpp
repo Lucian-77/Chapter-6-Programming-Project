@@ -1,86 +1,22 @@
-// Chapter  6 Programming Project.cpp : This file contains the 'Rectangle Properties' function. Program execution begins and ends there.
+// Chapter  6 Programming Project.cpp : This file contains the 'Fahrenheit to Celcius' function. Program execution begins and ends there.
 //
 
 #include <iostream>
 #include <iomanip>
 #include <windows.h>
 
-float perim(float L, float W);
-float area(float L, float W);
-float ver(float L, float W);
-void setC(int, int);
+float f = 0.0f;
 
-int x = 20, y = 2;
+float cel(float f);
 
 int main()
 {
-    char d;
-    do {
-        std::cout << "Enter the side lengths of your triangle\n" << std::setw(20) << std::left << "Length:" << std::right << "Width:\n";
-        float L, W;
-        std::cin >> L;
-        setC(x, y);
-        std::cin >> W;
-        do {
-            ver(L, W);
-        } while (L < 0 || W < 0);
-        float p = perim(L, W);
-        float a = area(L, W);
-        std::cout << std::setw(21) << std::left << "\nPerimeter:" << std::right << "Area:\n" << std::fixed << std::setprecision(2) << std::setw(20) << std::left << p << std::right << a << '\n' <<
-            "\nWould you like to process another triangle?\n" << "Y or N: ";
-        std::cin >> d;
-        std::cout << '\n';
-        y = y + 10;
-    } while (d == 'Y' || d == 'y');
-    if (d == 'N' || d == 'n') {
-        return 0;
-    }
-
-    return 0;
+	std::cout << std::setw(24) << std::left << "  Fahrenheit" << std::right << "Celcius  \n-----------------------------------\n";
+	for (f = 1; f < 20; f++) {
+		std::cout << std::fixed << std::setprecision(2) << std::setw(13) << std::left << f << std::right << cel(f) << '\n';
+	}
 }
 
-float perim(float L, float W) {
-    return 2 * L + 2 * W;
-}
-float area(float L, float W) {
-    return L * W;
-}
-float ver(float L, float W) {
-
-    if (L < 0 && W < 0) {
-        y = y + 3;
-        std::cout << "Please enter positive side lengths\n" << std::setw(20) << std::left << "Length:" << std::right << "Width:\n";
-        std::cin.clear();
-        std::cin.ignore(256, '\n');
-        std::cin >> L;
-        std::cin.clear();
-        std::cin.ignore(256, '\n');
-        setC(x, y);
-        std::cin >> W;
-    }
-    if (L < 0) {
-        y = y + 1;
-        std::cout << "Please enter a posetive length: ";
-        std::cin.clear();
-        std::cin.ignore(256, '\n');
-        std::cin >> L;
-    }
-    if (W < 0) {
-        y = y + 1;
-        std::cout << "Please enter a posetive width: ";
-        std::cin.clear();
-        std::cin.ignore(256, '\n');
-        std::cin >> W;
-    }
-    return L, W;
-}
-
-void setC(int x = 0, int y = 0)
-{
-    HANDLE handle;
-    COORD coordinates;
-    handle = GetStdHandle(STD_OUTPUT_HANDLE);
-    coordinates.X = x;
-    coordinates.Y = y;
-    SetConsoleCursorPosition(handle, coordinates);
+float cel(float f) {
+	return (5 * (f - 32)) / 9;
 }
