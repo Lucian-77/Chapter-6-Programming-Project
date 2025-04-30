@@ -5,16 +5,11 @@
 #include <iomanip>
 #include <windows.h>
 
-float f = 0.0f;
-
 float cel(float f);
 
 int main()
 {
-	std::cout << std::setw(20) << std::left << "Fahrenheit" << std::right << "Celcius\n------------------------------\n";
-	for (f = 1; f <= 20; f++) {
-		std::cout << std::fixed << std::setprecision(2) << std::setw(20) << std::left << f << std::right << cel(f) << '\n';
-	}
+	std::cout << "Enter each judge's score" << 
 }
 
 float cel(float f) {
