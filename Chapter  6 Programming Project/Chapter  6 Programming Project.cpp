@@ -21,14 +21,16 @@ int main()
         std::cin >> L;
         setC(x, y);
         std::cin >> W;
-        ver(L, W);
+        do {
+            ver(L, W);
+        } while (L < 0 || W < 0);
         float p = perim(L, W);
         float a = area(L, W);
-        std::cout << std::setw(20) << std::left << "\nPerimeter:" << std::right << "Area:\n" << std::fixed << std::setprecision(2) << std::setw(15) << std::right << p << std::left << a << '\n';
-        std::cout << "\nWould you like to process another triangle?\n" << "Y or N: ";
+        std::cout << std::setw(21) << std::left << "\nPerimeter:" << std::right << "Area:\n" << std::fixed << std::setprecision(2) << std::setw(20) << std::left << p << std::right << a << '\n' <<
+            "\nWould you like to process another triangle?\n" << "Y or N: ";
         std::cin >> d;
         std::cout << '\n';
-        y = y + 5;
+        y = y + 10;
     } while (d == 'Y' || d == 'y');
     if (d == 'N' || d == 'n') {
         return 0;
@@ -44,34 +46,35 @@ float area(float L, float W) {
     return L * W;
 }
 float ver(float L, float W) {
-    while (L < 0 || W < 0) {
-        if (L < 0) {
-            std::cout << "Please enter a posetive length: ";
-            std::cin.clear();
-            std::cin.ignore(256, '\n');
-            std::cin >> L;
-            return L;
-        }
-        if (W < 0) {
-            std::cout << "Please enter a posetive width: ";
-            std::cin.clear();
-            std::cin.ignore(256, '\n');
-            std::cin >> W;
-            return W;
-        }
-        if(L < 0 && W < 0) {
-            std::cout << "Please enter positive side lengths\n" << std::setw(20) << std::left << "Length:" << std::right << "Width:";
-            std::cin.clear();
-            std::cin.ignore(256, '\n');
-            std::cin >> L;
-            std::cin.clear();
-            std::cin.ignore(256, '\n');
-            setC(x, y);
-            std::cin >> W;
-            return L, W;
-        }
+
+    if (L < 0 && W < 0) {
+        y = y + 3;
+        std::cout << "Please enter positive side lengths\n" << std::setw(20) << std::left << "Length:" << std::right << "Width:\n";
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
+        std::cin >> L;
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
+        setC(x, y);
+        std::cin >> W;
     }
+    if (L < 0) {
+        y = y + 1;
+        std::cout << "Please enter a posetive length: ";
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
+        std::cin >> L;
+    }
+    if (W < 0) {
+        y = y + 1;
+        std::cout << "Please enter a posetive width: ";
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
+        std::cin >> W;
+    }
+    return L, W;
 }
+
 void setC(int x = 0, int y = 0)
 {
     HANDLE handle;
