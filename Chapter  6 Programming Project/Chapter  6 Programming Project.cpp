@@ -1,4 +1,4 @@
-// Chapter  6 Programming Project.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Chapter  6 Programming Project.cpp : This file contains the 'Rectangle Properties' function. Program execution begins and ends there.
 //
 
 #include <iostream>
@@ -10,20 +10,25 @@ float area(float L, float W);
 float ver(float L, float W);
 void setC(int, int);
 
-int x = 13, y = 0;
+int x = 20, y = 2;
 
 int main()
 {
     char d;
     do {
-        std::cout << "Enter the side lengths of your triangle\n" << std::setw(20) << std::left << "Length:" << std::right << "Width:/n";
+        std::cout << "Enter the side lengths of your triangle\n" << std::setw(20) << std::left << "Length:" << std::right << "Width:\n";
         float L, W;
         std::cin >> L;
         setC(x, y);
         std::cin >> W;
         ver(L, W);
-        std::cout << "Would you like to process another triangle?\n" << "Y or N: ";
+        float p = perim(L, W);
+        float a = area(L, W);
+        std::cout << std::setw(20) << std::left << "\nPerimeter:" << std::right << "Area:\n" << std::fixed << std::setprecision(2) << std::setw(15) << std::right << p << std::left << a << '\n';
+        std::cout << "\nWould you like to process another triangle?\n" << "Y or N: ";
         std::cin >> d;
+        std::cout << '\n';
+        y = y + 5;
     } while (d == 'Y' || d == 'y');
     if (d == 'N' || d == 'n') {
         return 0;
@@ -55,7 +60,7 @@ float ver(float L, float W) {
             return W;
         }
         if(L < 0 && W < 0) {
-            std::cout << "Please enter positive side lengths\n" << std::setw(7) << std::left << "Length:" << std::right << "Width:";
+            std::cout << "Please enter positive side lengths\n" << std::setw(20) << std::left << "Length:" << std::right << "Width:";
             std::cin.clear();
             std::cin.ignore(256, '\n');
             std::cin >> L;
