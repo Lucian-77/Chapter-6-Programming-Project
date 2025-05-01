@@ -56,8 +56,6 @@ float ver(float& L, float& W) {
             std::cin.clear();
             std::cin.ignore(256, '\n');
             std::cin >> L;
-            std::cin.clear();
-            std::cin.ignore(256, '\n');
             setC(x, y);
             std::cin >> W;
             --y;
@@ -72,8 +70,6 @@ float ver(float& L, float& W) {
             std::cin.clear();
             std::cin.ignore(256, '\n');
             std::cin >> L;
-            std::cin.clear();
-            std::cin.ignore(256, '\n');
             setC(x, y);
             std::cin >> W;
         }
